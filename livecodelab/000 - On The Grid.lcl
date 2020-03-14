@@ -1,0 +1,92 @@
+// ON THE GRID
+// by Paolo "babush" Montesel
+// (c) Coronavirus Quarantine in Italy
+
+scale 2.5
+
+T = 20
+Tmin = 1
+speed = 5
+
+//T = 40
+//Tmin = 30
+
+tt = time * speed
+if tt % (T * 2) < T
+	tmod = Tmin + tt % T
+else
+	tmod = Tmin + T - tt % T
+N = round tmod
+L = 0.002
+
+// X alpha
+ff = (i, j) -> ((i+1+j)/N * time) ** 1.1
+gg = (i, j) -> ((i+1+j)/N * time) ** 1.1
+
+background black
+cc1 = (i, j) -> 127 - 127 * (cos(pi * ff(i, j)))
+cc2 = (i, j) -> 127 - 127 * (cos(pi * gg(i, j)))
+noStroke
+
+autoflash = 0
+multicolor = 0
+randN = 0
+randRot = 0
+
+// Some effects
+//rotate 0, 0, time
+//rotate
+//scale 1 + 3 * (time % 5)
+//animationStyle motionBlur
+//animationStyle paintOver
+//multicolor = 1
+N = 1
+//N = 20
+//scale wave 0.1
+//rotate wave 0.1
+//L = 0.02
+//autoflash = 1
+//randN = 1
+//randRot = 1
+
+
+flash = 0
+✓doOnce flash = 255
+✓doOnce N = 10
+✓doOnce scale 10
+
+if autoflash && random > 0.92
+	flash = 255
+
+if randN and random() > 0.9
+	N += round(random() * 10)
+
+if randRot and random() > 0.9
+	rotate 0, 0, random()
+
+if N > 50
+	N = 50
+
+Z = N + 1 
+
+move -1/2, 0, 0
+Z times with j
+	move 0
+		N+1 times with i
+			c = cc1 i, j
+			b = 0
+			if multicolor
+				b = time*0.8 % 256
+			fill c / (j+1)**0.5, flash, b
+			box L, 1, L
+			move 1/N, 0, 0
+	move 0.5, -0.5, 0
+		N+1 times with i
+			c = cc2 i, j
+			b = 0
+			if multicolor
+				b =time*0.1 % 256
+			fill c / (j+1)**0.5, flash, b
+			box 1, L, L
+			move 0, 1/N, 0
+	move 0, 0, - 1 / N
