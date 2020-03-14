@@ -1,2 +1,3 @@
-# random-generative-art-thingie
+# Random Generative Art Thingies
+
 Coronavirus made me do this
