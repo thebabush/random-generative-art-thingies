@@ -1,0 +1,38 @@
+scale 0.06
+
+N = 50
+O = 30
+Z = 2
+R = 3
+living = 0
+
+//animationStyle paintOver
+
+background 40, 0, 40
+background 0
+//simpleGradient (color 0), (color 0, 0, 40), (color 20, 0, 40)
+fill 20
+//noFill
+//stroke 255, random, 0
+
+//move 0, 0, - O
+
+move 0, 0, 0
+
+rotate 0, 0, time
+//rotate
+
+O times with o
+	move 0, 0, - 2 * o
+	stroke 255 * (1 - (o + 1) / O), 0, 0
+	//rotate 0, 0, time / O
+	N times with i
+		move R * cos(2 * pi * i / N), R * sin(2 * pi * i /N)
+		//rotate 0, 0, 2 * pi * i / N + 10000000000000000000000 //+ time/100
+		rotate 0, 0, 2 * pi * (i / N + ((time / 10000) % 1))
+		if living
+			scale (0.1 + (time + o / O + i / N) % 1.2)
+				box
+		else
+			scale 0.5
+				box
