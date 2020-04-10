@@ -1,5 +1,9 @@
 ## LiveCodeLab Thingies
 
+### 002 - Triangle Mesh
+
+![](https://user-images.githubusercontent.com/1985669/78955055-60961b80-7ade-11ea-8375-879bc09b7584.png)
+
 ### 001 - Unexpectedly Spiraling Out
 
 ![](https://user-images.githubusercontent.com/1985669/76790942-1c09af80-67c0-11ea-873a-776e31f47d76.png)
